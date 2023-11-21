@@ -1,0 +1,102 @@
+
+# Would be really good to know about the donuts
+2) Can I improve the results alot by pinpointing several points, perhaps?
+Not really.
+Not sure how to select all the donuts to be honest. Seems hard for it
+
+
+# Read the summary paper of work done on Sam
+
+# Note SAM is more sensitive to textures than shapes!
+Which is why  it's poor at finding shapes!
+
+# Sam in High Quality
+https://arxiv.org/pdf/2306.01567.pdf
+https://github.com/SysCV/SAM-HQ
+
+# Lama
+LaMa: Resolution-robust Large Mask Inpainting with Fourier Convolutions
+https://github.com/advimman/lama
+
+# Inpaint Anything
+https://arxiv.org/abs/2304.06790
+https://github.com/geekyutao/Inpaint-Anything
+> Remove Anything
+> Fill Anything
+> Replace Anything
+
+# Restore Anything (No code available yet on the github!)
+https://arxiv.org/pdf/2305.13093.pdf
+https://github.com/eth-siplab/RAP
+
+# Deshadow-Anything
+https://arxiv.org/pdf/2309.11715
+(No code available, very short paper)
+
+# Track Anything  (Video SAM)
+Segment Anything Meets Video
+https://arxiv.org/abs/2304.11968
+https://github.com/gaomingqi/Track-Anything
+
+# AI Summary
+A curated list of general AI methods for Anything: AnyObject, AnyGeneration, AnyModel, AnyTask, etc.
+https://github.com/VainF/Awesome-Anything
+
+
+# One big issues is that the CUDA memory is never released, so can only run a few times before graphics card is out of memory
+
+
+export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb=10"
+
+
+# Output files are just written to demo/hq_sam_result + demo/hq_sam_tiny_result
+So, to view my results, just need to add my images into the system, but also need to set specific places for the input masks.......
+
+# Stuff to do:
+1. https://github.com/SysCV/sam-hq/tree/main - go through all the stuff here
+2. Go through the issues page:
+https://github.com/SysCV/sam-hq/issues?q=is%3Aopen+is%3Aissue
+(And the closed issues too)
+
+Basically, I want to see visually how it does on my images, that's all, so what's the easiest way to see it
+
+Also, how fast it does embedding for my images on my local machine, not in cloud
+
+# Then next question is how easy to just pop old model out and pop new model into my code
+How compatible are the models, methods?
+
+# Why is there a visual demo directory in the git? Are these the source images?
+No. These are the before and after animated gifs of SAM vs SAM-HQ
+
+# hq_token_only = False / True
+To achieve best visualization effect, for images contain multiple objects (like typical coco images), we suggest to set hq_token_only=False
+For images contain single object, we suggest to set hq_token_only = True
+
+# Currently need to be all .png files or all .jpg files
+????
+Stick with .jpg for now? Or will only .png files convert?
+
+# SO I need 8 jpeg examples
+Can convert from jpeg obviously
+Then do points or bounding rectangles
+Can do in art package quickly enough
+Which art package? Gwenview is ok
+
+Just pick 8 examples first:
+0) bar-lady.jpg - start (155,32) size (414,768)
+1) bracelet.jpg - start (45,99) size (869,681)
+2) drink.jpg - one point at (167,285)
+3) flower-lady.jpg one point at (310,130)
+4) old-lady-robot.jpg one point at (62,112)
+5) hi-res-flowers.jpg one point at (1130,1567)
+6) johnny-haynes.jpg start (202,0) size (786,922)
+7) donuts.jpg - try 2 points at (180,220) and (170,379)
+
+
+Seems to be better than SAM, but not massively. Lots of things still fuck up
+
+
+
+
+
+
